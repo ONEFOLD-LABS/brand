@@ -15,7 +15,8 @@ Logo, colours, type and the rules for using them, for every ONEFOLD LABS project
 |---|---|
 | [`logos/`](logos/) | The mark, lockups and avatar as SVG and PNG. See [`logos/README.md`](logos/README.md) for which file goes where. |
 | [`tokens/`](tokens/) | `tokens.json` (colours for light and dark, type scale, spacing, radii) and the compiled `tokens.css`. |
-| [`tools/`](tools/) | `make_logo.py` computes every logo; `build.sh` rebuilds logos, PNGs and `tokens.css`; `comfyui/` holds the exploration rounds. |
+| [`apps/`](apps/) | App icons (`icon.svg`, `icon-small.svg`) and `palette.json` with interface, semantic and domain colours for every app, plus `sheet.png`. |
+| [`tools/`](tools/) | `make_logo.py` computes every logo; `make_app_icons.py` computes the app icons and colours; `build.sh` rebuilds logos, PNGs and `tokens.css`; `comfyui/` holds the exploration rounds. |
 | [`concepts/`](concepts/) | The Krea-2 drafts the mark was found in, with prompts and seeds. Reference only. |
 
 Rebuild everything after changing geometry, colours or tokens:
@@ -48,7 +49,7 @@ Every ONEFOLD app is **a disc in its own colour** with a cut-out motif that show
 - Gradient from top left (one step lighter) to bottom right (one step darker) around the app colour `app-<name>`.
 - The motif is a real hole in the disc, computed geometry, one single shape. It must stay open from 32 px; 16–32 px get a simplified version.
 - Inside the app, its colour is the sparing accent; the interface stays neutral. The ONEFOLD mark appears in an app only in the About dialog, as `onefold-mark-ink.svg` or `-white.svg` at 16–24 px with the line “A tool by ONEFOLD LABS”.
-- `app-codecraft` to `app-issuecraft` are proposals; each holds at least 4.5:1 against white. When an app colour is settled, change the token and drop the “Proposal” note.
+- Every `app-<name>` colour holds at least 4.5:1 against white. The icons, the interface accents for both themes and the colours for each app's own data are computed from these tokens by `tools/make_app_icons.py`; see [`apps/`](apps/).
 
 ## Colour
 
