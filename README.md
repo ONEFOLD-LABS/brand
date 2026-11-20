@@ -43,6 +43,11 @@ The letter O, folded once. A petrol ring has its lower-right edge peeled back al
 
 ## The app family
 
+| <img src="apps/studiocraft/icon.svg" width="64" alt="StudioCraft icon"> | <img src="apps/codecraft/icon.svg" width="64" alt="CodeCraft icon"> | <img src="apps/termcraft/icon.svg" width="64" alt="TermCraft icon"> | <img src="apps/gitcraft/icon.svg" width="64" alt="GitCraft icon"> | <img src="apps/datacraft/icon.svg" width="64" alt="DataCraft icon"> | <img src="apps/cloudcraft/icon.svg" width="64" alt="CloudCraft icon"> | <img src="apps/issuecraft/icon.svg" width="64" alt="IssueCraft icon"> |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **StudioCraft**<br>Decay | **CodeCraft**<br>Brackets | **TermCraft**<br>Prompt | **GitCraft**<br>Branch | **DataCraft**<br>Store | **CloudCraft**<br>Block | **IssueCraft**<br>Done |
+| `app-studiocraft` | `app-codecraft` | `app-termcraft` | `app-gitcraft` | `app-datacraft` | `app-cloudcraft` | `app-issuecraft` |
+
 Every ONEFOLD app is **a disc in its own colour** with a cut-out motif that shows its job. StudioCraft sets the pattern: a wine-red disc with a decaying wave cut out of it ([`assets/app-icon`](https://github.com/ONEFOLD-LABS/StudioCraft/tree/main/assets/app-icon) in the StudioCraft repository). The other apps follow the same grid:
 
 - 512 viewBox, disc radius 226, transparent ground, no tile.
