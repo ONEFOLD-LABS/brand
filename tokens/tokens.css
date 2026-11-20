@@ -1,0 +1,77 @@
+/* ONEFOLD LABS — generated from tokens.json by tools/tokens_css.py; do not edit */
+:root {
+  --paper: #f6f7f5;
+  --surface: #ffffff;
+  --surface-sunken: #eceeeb;
+  --line: #c9d0cf;
+  --ink: #111719;
+  --ink-muted: #56636a;
+  --petrol: #0e5a64;
+  --petrol-strong: #0a454d;
+  --petrol-tint: #d3e6e8;
+  --on-petrol: #ffffff;
+  --saffron: #f2b630;
+  --on-saffron: #1f1600;
+  --focus: #0e5a64;
+  --app-studiocraft: #9e2343;
+  --app-codecraft: #2d5bd2;
+  --app-termcraft: #1d7a4c;
+  --app-gitcraft: #c4501d;
+  --app-datacraft: #6a4cc0;
+  --app-cloudcraft: #167fa6;
+  --app-issuecraft: #86650f;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-disc: 999px;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #101416;
+    --surface: #171d20;
+    --surface-sunken: #0b0e10;
+    --line: #3a454a;
+    --ink: #eef2f1;
+    --ink-muted: #9aa8ae;
+    --petrol: #4fa9b3;
+    --petrol-strong: #7cc3cb;
+    --petrol-tint: #12363b;
+    --on-petrol: #08181b;
+    --focus: #f2b630;
+    color-scheme: dark;
+  }
+}
+[data-theme="dark"] {
+  --paper: #101416;
+  --surface: #171d20;
+  --surface-sunken: #0b0e10;
+  --line: #3a454a;
+  --ink: #eef2f1;
+  --ink-muted: #9aa8ae;
+  --petrol: #4fa9b3;
+  --petrol-strong: #7cc3cb;
+  --petrol-tint: #12363b;
+  --on-petrol: #08181b;
+  --focus: #f2b630;
+  color-scheme: dark;
+}
+.display-xl { font-family: var(--font-display); font-size: 64px; line-height: 64px; font-weight: 800; letter-spacing: 0.01em; font-stretch: 125%; }
+.display { font-family: var(--font-display); font-size: 40px; line-height: 44px; font-weight: 800; letter-spacing: 0.01em; font-stretch: 125%; }
+.title { font-family: var(--font-display); font-size: 28px; line-height: 34px; font-weight: 700; }
+.heading { font-family: var(--font-text); font-size: 20px; line-height: 28px; font-weight: 700; }
+.body { font-family: var(--font-text); font-size: 16px; line-height: 26px; font-weight: 400; }
+.small { font-family: var(--font-text); font-size: 14px; line-height: 20px; font-weight: 400; }
+.label { font-family: var(--font-text); font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; }
+.code { font-family: var(--font-mono); font-size: 14px; line-height: 22px; font-weight: 400; }
+.mono-label { font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 500; }

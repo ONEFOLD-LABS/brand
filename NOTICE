@@ -1,0 +1,10 @@
+ONEFOLD LABS brand
+
+The wordmark in logos/ is set in Archivo (Omnibus-Type), converted to outlines.
+Archivo is licensed under the SIL Open Font License 1.1:
+https://github.com/google/fonts/tree/main/ofl/archivo
+
+tokens/ names Archivo and JetBrains Mono (SIL Open Font License 1.1) as the
+brand typefaces; no font files are distributed here.
+
+The drafts in concepts/ were generated with Krea-2 Turbo on a local ComfyUI.
