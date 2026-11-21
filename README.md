@@ -1,6 +1,6 @@
 # ONEFOLD LABS brand
 
-Logo, colours, type and the rules for using them, for every ONEFOLD LABS project: StudioCraft, CodeCraft, TermCraft, GitCraft, DataCraft, CloudCraft and IssueCraft.
+Logo, colours, type and the rules for using them, for every ONEFOLD LABS project (today: StudioCraft).
 
 <p>
   <picture>
@@ -15,7 +15,7 @@ Logo, colours, type and the rules for using them, for every ONEFOLD LABS project
 |---|---|
 | [`logos/`](logos/) | The mark, lockups and avatar as SVG and PNG. See [`logos/README.md`](logos/README.md) for which file goes where. |
 | [`tokens/`](tokens/) | `tokens.json` (colours for light and dark, type scale, spacing, radii) and the compiled `tokens.css`. |
-| [`apps/`](apps/) | App icons (`icon.svg`, `icon-small.svg`) and `palette.json` with interface, semantic and domain colours for every app, plus `sheet.png`. |
+| [`apps/`](apps/) | App icons (`icon.svg`, `icon-small.svg`) and `palette.json` with interface, semantic and domain colours for every app. |
 | [`tools/`](tools/) | `make_logo.py` computes every logo; `make_app_icons.py` computes the app icons and colours; `build.sh` rebuilds logos, PNGs and `tokens.css`; `comfyui/` holds the exploration rounds. |
 | [`concepts/`](concepts/) | The Krea-2 drafts the mark was found in, with prompts and seeds. Reference only. |
 
@@ -27,7 +27,7 @@ tools/build.sh   # needs python3 + fonttools, rsvg-convert, curl
 
 # Brand book
 
-ONEFOLD LABS is the umbrella for a family of open desktop tools: StudioCraft, CodeCraft, TermCraft, GitCraft, DataCraft, CloudCraft, IssueCraft. Each app does one thing thoroughly, runs locally, needs no account and is open source. The brand says the same: **one sheet, one fold.** A good tool needs no more moves than that.
+ONEFOLD LABS makes open desktop tools; today that is **StudioCraft**, a digital audio workstation. Each app does one thing thoroughly, runs locally, needs no account and is open source. The brand says the same: **one sheet, one fold.** A good tool needs no more moves than that.
 
 ## The mark
 
@@ -43,12 +43,12 @@ The letter O, folded once. A petrol ring has its lower-right edge peeled back al
 
 ## The app family
 
-| <img src="apps/studiocraft/icon.svg" width="64" alt="StudioCraft icon"> | <img src="apps/codecraft/icon.svg" width="64" alt="CodeCraft icon"> | <img src="apps/termcraft/icon.svg" width="64" alt="TermCraft icon"> | <img src="apps/gitcraft/icon.svg" width="64" alt="GitCraft icon"> | <img src="apps/datacraft/icon.svg" width="64" alt="DataCraft icon"> | <img src="apps/cloudcraft/icon.svg" width="64" alt="CloudCraft icon"> | <img src="apps/issuecraft/icon.svg" width="64" alt="IssueCraft icon"> |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **StudioCraft**<br>Decay | **CodeCraft**<br>Brackets | **TermCraft**<br>Prompt | **GitCraft**<br>Branch | **DataCraft**<br>Store | **CloudCraft**<br>Block | **IssueCraft**<br>Done |
-| `app-studiocraft` | `app-codecraft` | `app-termcraft` | `app-gitcraft` | `app-datacraft` | `app-cloudcraft` | `app-issuecraft` |
+| <img src="apps/studiocraft/icon.svg" width="64" alt="StudioCraft icon"> |
+|:---:|
+| **StudioCraft**<br>Decay |
+| `app-studiocraft` |
 
-Every ONEFOLD app is **a disc in its own colour** with a cut-out motif that shows its job. StudioCraft sets the pattern: a wine-red disc with a decaying wave cut out of it ([`assets/app-icon`](https://github.com/ONEFOLD-LABS/StudioCraft/tree/main/assets/app-icon) in the StudioCraft repository). The other apps follow the same grid:
+Every ONEFOLD app is **a disc in its own colour** with a cut-out motif that shows its job. StudioCraft sets the pattern: a wine-red disc with a decaying wave cut out of it ([`assets/app-icon`](https://github.com/ONEFOLD-LABS/StudioCraft/tree/main/assets/app-icon) in the StudioCraft repository). Any further app follows the same grid:
 
 - 512 viewBox, disc radius 226, transparent ground, no tile.
 - Gradient from top left (one step lighter) to bottom right (one step darker) around the app colour `app-<name>`.
