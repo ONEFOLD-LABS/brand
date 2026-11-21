@@ -18,7 +18,6 @@ import sys
 from pathlib import Path
 
 from shapely.geometry import LineString, Point
-from shapely.ops import unary_union
 
 sys.path.insert(0, str(Path(__file__).parent))
 from oklch import contrast, hex_to_rgb, oklch, rgb_to_oklch
@@ -40,29 +39,10 @@ def stroke(points, width):
     return LineString(points).buffer(width / 2, quad_segs=16)
 
 
-def dot(x, y, r):
-    return Point(x, y).buffer(r, quad_segs=32)
 
 
-def bezier(p0, p1, p2, p3, steps=48):
-    out = []
-    for i in range(steps + 1):
-        t = i / steps
-        u = 1 - t
-        out.append((
-            u ** 3 * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t ** 3 * p3[0],
-            u ** 3 * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t ** 3 * p3[1],
-        ))
-    return out
 
 
-def arc(cx, cy, rx, ry, a0, a1, steps=64):
-    return [(cx + rx * math.cos(math.radians(a0 + (a1 - a0) * i / steps)),
-             cy + ry * math.sin(math.radians(a0 + (a1 - a0) * i / steps))) for i in range(steps + 1)]
-
-
-# ------------------------------------------------------------------ marks
-# Each mark returns the shape to cut out, for a stroke width w (30 or 44).
 
 
 def mark_studio(w):
@@ -77,73 +57,10 @@ def mark_studio(w):
     return stroke(pts, w)
 
 
-def mark_git(w):
-    """Abzweig: a line of history with a branch that leaves it; three commits as dots.
-
-    A common motif for branches, drawn from scratch here (own geometry, no icon set traced).
-    The whole mark is centred on the disc."""
-    r = 34 if w == LINE else 46
-    dx = 16  # centre the mark: lines span x 200..316 before the shift
-    main = stroke([(200 + dx, 132), (200 + dx, 380)], w)
-    branch = stroke(bezier((200 + dx, 352), (200 + dx, 270), (316 + dx, 286), (316 + dx, 196)), w)
-    return unary_union([main, branch, dot(200 + dx, 132, r), dot(200 + dx, 380, r),
-                        dot(316 + dx, 168, r)])
-
-
-def mark_term(w):
-    """Prompt: a chevron and a waiting cursor."""
-    s = 0 if w == LINE else 8
-    chev = stroke([(150 + s, 168), (246, 256), (150 + s, 344)], w)
-    cursor = stroke([(290, 344), (372 - s, 344)], w)
-    return unary_union([chev, cursor])
-
-
-def mark_code(w):
-    """Klammern: angle brackets around a slash."""
-    if w == LINE:
-        parts = [[(196, 172), (124, 256), (196, 340)], [(316, 172), (388, 256), (316, 340)],
-                 [(282, 150), (230, 362)]]
-    else:  # fewer, bolder parts: the slash stays, brackets move inward
-        parts = [[(200, 176), (132, 256), (200, 336)], [(312, 176), (380, 256), (312, 336)],
-                 [(276, 160), (236, 352)]]
-    return unary_union([stroke(p, w) for p in parts])
-
-
-def mark_data(w):
-    """Speicher: a database cylinder."""
-    rx, ry = (112, 40) if w == LINE else (108, 44)
-    top, bot = 168, 344
-    parts = [arc(256, top, rx, ry, 0, 360, 96),
-             [(256 - rx, top), (256 - rx, bot)], [(256 + rx, top), (256 + rx, bot)],
-             arc(256, bot, rx, ry, 0, 180)]
-    if w == LINE:
-        parts.append(arc(256, (top + bot) / 2, rx, ry, 0, 180))
-    return unary_union([stroke(p, w) for p in parts])
-
-
-def mark_cloud(w):
-    """Baustein: an isometric block, the unit of infrastructure."""
-    r = 136 if w == LINE else 128
-    hexagon = [(256 + r * math.cos(math.radians(a)), 256 + r * math.sin(math.radians(a)))
-               for a in (-90, -30, 30, 90, 150, 210, -90)]
-    inner = [(256, 256), (256, 256 + r)], [(256, 256), hexagon[1]], [(256, 256), hexagon[5]]
-    return unary_union([stroke(hexagon, w)] + [stroke(p, w) for p in inner])
-
-
-def mark_issue(w):
-    """Erledigt: a check mark."""
-    return stroke([(150, 262), (226, 336), (366, 184)], w + (6 if w == LINE else 0))
-
 
 APPS = [
     # key, name, mark, name of the mark
     ("studiocraft", "StudioCraft", mark_studio, "Decay"),
-    ("codecraft", "CodeCraft", mark_code, "Brackets"),
-    ("termcraft", "TermCraft", mark_term, "Prompt"),
-    ("gitcraft", "GitCraft", mark_git, "Branch"),
-    ("datacraft", "DataCraft", mark_data, "Store"),
-    ("cloudcraft", "CloudCraft", mark_cloud, "Block"),
-    ("issuecraft", "IssueCraft", mark_issue, "Done"),
 ]
 
 # ------------------------------------------------------------------ colours
@@ -219,22 +136,10 @@ def app_colours(app):
     }
 
 
-# Domain palettes: semantic colours the app's own data needs, per theme. Hues are chosen per
-# meaning; lightness is solved for readability like the semantic colours.
-DOMAIN = {
-    "gitcraft": {"added": 145, "modified": 80, "deleted": 25, "renamed": 245, "conflict": 45,
-                 "untracked": None},
-    "termcraft": {  # ANSI colours 1-6 (0/7 and brights are neutrals and lighter variants)
-        "red": 25, "green": 145, "yellow": 95, "blue": 255, "magenta": 330, "cyan": 200},
-    "codecraft": {"keyword": 300, "string": 140, "number": 60, "comment": None, "type": 200,
-                  "function": 255, "constant": 25},
-    "datacraft": {"null": None, "number": 60, "text": 140, "boolean": 300, "date": 200,
-                  "key": 85, "transaction_open": 75, "autocommit": 145},
-    "cloudcraft": {"production": 25, "staging": 75, "development": 145, "local": 245,
-                   "running": 145, "stopped": None, "failed": 25, "pending": 75},
-    "issuecraft": {"bug": 25, "feature": 255, "task": None, "improvement": 145, "epic": 300,
-                   "urgent": 25, "high": 50, "medium": 80, "low": 245},
-}
+# Domain palettes: semantic colours an app's own data needs, per theme, as {name: hue or None}.
+# Hues are chosen per meaning; lightness is solved for readability like the semantic colours.
+# StudioCraft needs none yet.
+DOMAIN: dict[str, dict[str, int | None]] = {}
 
 
 def domain(key, theme):
